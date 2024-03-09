@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple English</title>
+ <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0c1445;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border: 2px solid #1e2b78;
+      border-radius: 10px;
+      background-color: #1e2b78;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #f5c518;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #f5c518;
+      color: #1e2b78;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d4aa00;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Subject verb agreement</h1>
+  <div id="question"></div>
+  <div id="options"></div>
+</div>
+
+<script>
+  const questions = [
+    {
+      question: "1.She______ cats.",
+      options: ["A.love", "B.loves"],
+      answer: "B.loves"
+    },
+    {
+      question: "2.He______some bananas.",
+      options: ["A.eat", "B.eats"],
+      answer: "B.eats"
+    },
+    {
+      question: "3.They_______that house over there.",
+      options: ["A.own", "B.owns"],
+      answer: "A.own"
+    },
+    {
+      question: "4.We______amazing.",
+      options: ["A.dance", "B.dances"],
+      answer: "A.dance"
+    },
+    {
+      question: "5.Nora______an ice cream.",
+      options: ["A.want", "B.wants"],
+      answer: "B.wants"
+    },
+    {
+      question: "6.I______ that information.",
+      options: ["A.know", "B.knows"],
+      answer: "A.know"
+    },
+    {
+      question: "7.We______an incredible dance steps.",
+      options: ["A.create", "B.creates"],
+      answer: "A.create"
+    },
+    {
+      question: "8.Lolita______a poem.",
+      options: ["A.write", "B.writes"],
+      answer: "B.writes"
+    },
+    {
+      question: "9.Rosita______the pork.",
+      options: ["A.chop", "B.chops"],
+      answer: "B.chops"
+    },
+    {
+      question: "10.The farmer______the apple from the tree.",
+      options: ["A.pick", "B.picks"],
+      answer: "B.picks"
+    },
+    {
+      question: "Remember, always seak for new knowledge",
+      options: ["Okey"],
+      answer: "Okey"
+    }
+  ];
+
+  const quizContainer = document.getElementById('question');
+  const optionsContainer = document.getElementById('options');
+
+  function loadQuestion(questionIndex) {
+    const currentQuestion = questions[questionIndex];
+    quizContainer.innerText = currentQuestion.question;
+    optionsContainer.innerHTML = '';
+    currentQuestion.options.forEach(option => {
+      const button = document.createElement('button');
+      button.innerText = option;
+      button.addEventListener('click', function() {
+        checkAnswer(option, currentQuestion.answer);
+      });
+      optionsContainer.appendChild(button);
+    });
+  }
+
+  let questionIndex = 0;
+  loadQuestion(questionIndex);
+
+  function checkAnswer(selectedOption, correctAnswer) {
+    if (selectedOption === correctAnswer) {
+      alert('Very Good! Proceed?');
+    } else {
+      alert('Sorry, but the correct asnwer is ' + correctAnswer);
+    }
+    questionIndex++;
+    if (questionIndex < questions.length) {
+      loadQuestion(questionIndex);
+    } else {
+      alert('The quiz is finish');
+    }
+  }
+</script>
+<body background="C:\Users\User\Desktop\ICT\Untitled design.png">
+</body>
+</html>
